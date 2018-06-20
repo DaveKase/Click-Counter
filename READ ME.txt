@@ -1,0 +1,17 @@
+Click Counter on lihtne statistika kogumise rakendus. Androidi seadmes on programm, kus kasutaja saab klikkida neljal nupul, mille peale saadetakse serverile teade, et millist nuppu 
+vajutati. Seda tehakse kasutades JSONit ja objekt näeb välja {"btn_id":"yellow"}. Serveris on veebileht, mis näitab, kui mitu korda mingit nuppu on vajutatud.
+
+Androidi rakendusest:
+	Androidi rakendusele tuleb ette anda serveri IP aadress, selleks tuleb minna avakuval -> menüü -> Settings. Seal siis sisestada ainult IP-aadress ja vajutada OK. Muud URLi osad lisab
+	rakendus juba ise. Selles kaustas on kaasas ka ClickCounter.apk fail, mille saab kopeerida ja käivitada otse seadmelt.
+
+Serveri poolest:
+	Serverina kasutati WAMP serverit. WAMP serveri WWWW kaustas on projekt ClickCounter, mis sisaldab endas kahte faili: index.php ja getCount.php. Index.php näitab erinevate klikkide 
+	arvu, kasutades selleks nuppudega sama värvi ringe, mis on loodud SVG'ga.
+	
+	getCount.php võtab Androidi rakenduselt vastu teateid ja salvestab nad MySQL contact_counter andmebaasi counter tabelisse. Tabel ise omab kolme välja:
+	ID (int, primary key, auto_increment),
+	button_id (varchar),
+	click_count (int).
+	
+	Lehtede aadressid peaks olema localhost/ClickCounter/ ja localhost/ClickCounter/getCount.php
